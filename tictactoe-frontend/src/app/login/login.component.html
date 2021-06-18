@@ -1,0 +1,11 @@
+<div class="login">
+  <form>
+    <div class="field name-box" (keydown.enter)="login()">
+        <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Who Are You?"/>
+        <label for="name">name</label>
+        <span class="ss-icon">check</span>
+    </div>
+    <button type="submit" style="display:none"></button>
+    <span *ngIf="error" class="login-error">{{error}}</span>
+  </form>
+</div>

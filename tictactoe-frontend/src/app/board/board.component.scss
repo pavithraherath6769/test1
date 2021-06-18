@@ -1,0 +1,68 @@
+.game {
+  background-image: linear-gradient(#c0b8a5, #e1e0db);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+
+  .button-back {
+    background-color: #313a3d;
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 4rem;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .spectator {
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  h1.status {
+    margin-top: 2rem;
+  }
+
+  td {
+    border: 2px solid #888;
+    height: 200px;
+    min-width: 200px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 70px;
+    cursor: pointer;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+
+  table tr:first-child td {
+    border-top: none;
+  }
+
+  table tr:last-child td {
+    border-bottom: none;
+  }
+
+  table tr td:first-child {
+    border-left: none;
+  }
+
+  table tr td:last-child {
+    border-right: none;
+  }
+}

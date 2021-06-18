@@ -1,0 +1,22 @@
+<div class="game">
+	<div *ngIf="game.spectator" class="spectator"></div>
+  <div class="button-back" *ngIf="game.status || game.spectator" (click)="leaveGame()">Leave game and go back to lobby</div>
+		<table>
+			<tr>
+				<td class="cell" (click)="game.turnClick($event)" id="0">{{ game.getCell(0) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="1">{{ game.getCell(1) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="2">{{ game.getCell(2) }}</td>
+			</tr>
+			<tr>
+				<td class="cell" (click)="game.turnClick($event)" id="3">{{ game.getCell(3) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="4">{{ game.getCell(4) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="5">{{ game.getCell(5) }}</td>
+			</tr>
+			<tr>
+				<td class="cell" (click)="game.turnClick($event)" id="6">{{ game.getCell(6) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="7">{{ game.getCell(7) }}</td>
+				<td class="cell" (click)="game.turnClick($event)" id="8">{{ game.getCell(8) }}</td>
+			</tr>		
+		</table>
+    <h1 *ngIf="!game.spectator" class="status">{{ game.status }}</h1>
+	</div>
