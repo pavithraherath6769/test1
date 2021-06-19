@@ -27,6 +27,7 @@
     height: 100vh;
     left: 0;
     top: 0;
+    border-style: double;
   }
 
   h1.status {
@@ -65,4 +66,12 @@
   table tr td:last-child {
     border-right: none;
   }
+  
+}
+.score{
+  background-image: linear-gradient(#c0b8a5, #e1e0db);
+}
+.turn{
+ position:fixed;
+  margin-right: 80%;
 }

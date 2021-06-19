@@ -21,11 +21,15 @@ export class GameService {
   public users: string[] = []
   public games: Array<any> = []
   public board: Array<string | number>
-  public locked: boolean = false
+  public locked: boolean = false;
   public ai: boolean = false
   public status: string = ''
   public player: string
   public spectator: boolean
+  public computerScore: number;
+  public humanScore: number;
+  public turn = '';
+  
 
   constructor(private http: HttpClient, private router: Router) {
     this.ws.subscribe(
@@ -49,7 +53,10 @@ export class GameService {
       case 'turn':
         this.board = msg.board
         if (msg.winner) {
+          console.log(message,'asdasdas')
           if (msg.winner == this.player) {
+            
+          console.log(msg.winner,'asdasdas')
             this.status = 'You won!'
           } else if (msg.winner == 'Tie') {
             this.status = 'Tie!'
@@ -80,8 +87,6 @@ export class GameService {
     this.ws.next({ type: 'leaveLobby' })
   }
 
-
-
   public leaveGame(): void {
     this.ws.next({ type: 'leaveGame', name: this.userName })
   }
@@ -107,9 +112,39 @@ export class GameService {
     this.player = 'O'
     this.board = Array.from(Array(9).keys())
     this.status = ''
-    this.locked = false
+    this.locked = false;
     this.ai = true
     this.router.navigateByUrl('/board')
-    this.ws.next({ type: 'startAI' })
+    this.ws.next({ type: 'startAI' });
+    this.randomNumber(1); // start the game at random
   }
+
+  //play aifirst
+  aifn2() { 
+    this.locked = true;
+    this.turn ='AI first Move'
+    this.ws.next({ type: 'AITurn', board: this.board }); 
+    console.log('AI first');
+  } 
+
+   //play humanfirst
+   humanfn1() { 
+    
+    this.locked = false
+    this.turn ='Player first Move'
+    console.log('Player first');
+  }
+  randomNumber(n) { 
+    let cfd =  Math.floor(Math.random() * (n + 1));
+    console.log('number',cfd ); 
+    if(cfd == 1 ){
+      this.humanfn1();
+    }else{
+      this.aifn2();
+    }
+    
+    
+  } 
+   
+   
 }
